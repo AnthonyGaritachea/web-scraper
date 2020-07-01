@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.js',
+    entry: ['@babel/polyfill', './src/index.js'],
     output: {
         filename: 'bundle.js',
         path: path.join(__dirname, 'public')
@@ -18,6 +18,9 @@ module.exports = {
     },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'public')
+        contentBase: path.join(__dirname, 'public'),
+        proxy: {
+            '/scraper': 'http://localhost:5000'
+          }
     }
 }
