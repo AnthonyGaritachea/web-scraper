@@ -2,11 +2,13 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 require('dotenv').config();
 
-const fetchNews = async () => {
+const Story = require('./models/Story.js');
+
+const scrapeNews = async () => {
     try {
-        const response = await axios.get(`${process.env.NEWS_URL}`);
-        const { data } = await response;
-        let $ = await cheerio.load(data);
+        const html = await axios.get(`${process.env.NEWS_URL}`);
+        const { data } = await html ;
+        let $ =  cheerio.load(data);
 
         let newsData = [];
         
@@ -23,11 +25,23 @@ const fetchNews = async () => {
                 newsSnippet,
                 newsHref
             });
+
+            let newsStory = new Story({
+                topic,
+                title,
+                newsSnippet,
+                newsHref 
+            });
+            newsStory.save(err => {
+                if(err){
+                    console.log(err)
+                }
+            });
         });
-        console.log(newsData)
+        return newsData;
     } catch(err) {
         console.log(err)
     }
 };
 
-console.log(fetchNews());
+module.exports = scrapeNews;
