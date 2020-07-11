@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --config=jest.config.js",
     "dev": "webpack-dev-server --config webpack.dev.js"
   },
   "keywords": [],
@@ -23,6 +23,10 @@
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
+    "babel-jest": "^26.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "jest": "^26.1.0",
     "webpack-dev-server": "^3.10.3"
   }
 }

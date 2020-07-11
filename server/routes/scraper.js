@@ -1,13 +1,15 @@
+const express = require('express');
+const router = express.Router();
 const axios = require('axios');
 const cheerio = require('cheerio');
 require('dotenv').config();
 
-const Story = require('./models/Story.js');
+const Story = require('../models/Story.js');
 
 const scrapeNews = async () => {
     try {
         const html = await axios.get(`${process.env.NEWS_URL}`);
-        const { data } = await html ;
+        const { data } = await html;
         let $ =  cheerio.load(data);
 
         let newsData = [];
@@ -44,4 +46,13 @@ const scrapeNews = async () => {
     }
 };
 
-module.exports = scrapeNews;
+router.get('/', async (req, res) => {
+    try {
+        const data = await scrapeNews();
+        res.json(data);
+    } catch(err){
+        console.log(err)
+    }
+});
+
+module.exports = router;

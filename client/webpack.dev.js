@@ -20,7 +20,8 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'public'),
         proxy: {
-            '/scraper': 'http://localhost:5000'
+            '/scraper': 'http://localhost:5000',
+            '/stories': 'http://localhost:5000'
           }
     }
 }
