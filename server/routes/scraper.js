@@ -19,7 +19,7 @@ const scrapeNews = async () => {
             let topic = $(element).find('a.tout-tag-link').text().trim();
             let title = $(element).find('a.tout-title-link').text().trim();
             let newsSnippet = $(element).find('div.tout-copy.river').text().trim();
-            let newsHref = `${process.env.NEWS_ROOT}` + $(element).find('a.tout-title-link').attr('href');
+            let newsHref = `${process.env.NEWS_ROOT}` + $(element).find('a.tout-title-link').attr('href').replace(/https?:\/\/[^\/]+/gi, '');
             
             newsData.push({
                 topic,
@@ -37,6 +37,8 @@ const scrapeNews = async () => {
             newsStory.save(err => {
                 if(err){
                     console.log(err)
+                } else {
+                    console.log('Data has been saved!')
                 }
             });
         });

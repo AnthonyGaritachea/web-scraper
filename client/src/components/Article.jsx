@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Article = (props) => {
-    const { topic, title, newsSnippet, newsHref } = props;
+    const { id, topic, title, newsSnippet, newsHref } = props;
     return(
         <div>
             <p>{topic}</p>

@@ -26,17 +26,19 @@ const DisplayArticles = () => {
         );
     };
 
-
     return (
         <div>
             { articles.map(story => {
                 return (
-                    <Article 
-                        topic={story.topic}
-                        title={story.title}
-                        newsSnippet={story.newsSnippet}
-                        newsHref={story.newsHref}
-                    />
+                    <div key={story._id}>
+                        <Article 
+                            id={story._id}
+                            topic={story.topic}
+                            title={story.title}
+                            newsSnippet={story.newsSnippet}
+                            newsHref={story.newsHref}
+                        />
+                    </div>
                 )
             })}
         </div>
