@@ -30,7 +30,7 @@ const DisplayArticles = () => {
         <div>
             { articles.map(story => {
                 return (
-                    <div key={story._id}>
+                    <div className='article-container' key={story._id}>
                         <Article 
                             id={story._id}
                             topic={story.topic}
