@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Article from './Article.jsx';
+import { fetchNews } from '../redux/actions/actionTypes.js';
 
 const DisplayArticles = () => {
-    const [articles, setArticles] = useState([]);
+    const dispatch = useDispatch();
+    const articles = useSelector(state => state.scrapedNews.news);
 
     useEffect(() => {
-        try {
-            const fetchArticles = async () => {
-                const { data } = await axios.get('/stories');
-                setArticles(data);
-            };
-            fetchArticles();
-        } catch (err) {
-            console.log(err)
-        }
+        dispatch(fetchNews());
     }, []);
 
     if(!articles){

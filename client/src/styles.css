@@ -59,3 +59,17 @@ body {
     text-align: right;
     padding: 5px;
 }
+
+.icon-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.heart-icon {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.delete-icon {
+    cursor: pointer;
+}
