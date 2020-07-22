@@ -1,5 +1,4 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Article from './Article.jsx';
@@ -27,6 +26,7 @@ const DisplayArticles = () => {
                 return (
                     <div className='article-container' key={story._id}>
                         <Article 
+                            story={story}
                             id={story._id}
                             topic={story.topic}
                             title={story.title}

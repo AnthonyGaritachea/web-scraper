@@ -1,6 +1,5 @@
 const initialState = {
     news: [],
-    favorites: []
 };
 
 const fetchNewsReducer = (state = initialState, action) => {
@@ -8,9 +7,7 @@ const fetchNewsReducer = (state = initialState, action) => {
         case 'FETCH_NEWS':
             return {
                 ...state,
-                news: [
-                        ...action.payload
-                ]
+                news: [...action.payload]
             }
             default: return state
     };

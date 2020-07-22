@@ -1,13 +1,13 @@
 import React from 'react';
 import { FiHeart } from "react-icons/fi";
 import { RiCloseCircleLine } from "react-icons/ri";
+import { useDispatch } from 'react-redux';
+
+import { addToFavorites } from '../redux/actions/actionTypes.js';
 
 const Article = props => {
-    const { id, topic, title, newsSnippet, newsHref } = props;
-
-    const addToFavorites = () => {
-        console.log('added to favorites!!!');
-    };
+    const { story, id, topic, title, newsSnippet, newsHref } = props;
+    const dispatch = useDispatch();
 
     const deleteArticle = () => {
         console.log('deleted article');
@@ -20,7 +20,7 @@ const Article = props => {
         </div>
         <div className='article-details'>
             <div className='icon-container'>
-                <div className='heart-icon' onClick={addToFavorites}>
+                <div className='heart-icon' onClick={() => dispatch(addToFavorites(story))}>
                     <FiHeart color='red' size='25px'/>
                 </div>
                 <div className='delete-icon' onClick={deleteArticle}>
