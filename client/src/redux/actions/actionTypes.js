@@ -16,3 +16,14 @@ export const addToFavorites = story => {
         payload: story  
     };
 };
+
+export const deleteStory = story => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch({
+                type: 'DELETE_STORY',
+                payload: story
+            })
+        }, 1000)
+    };
+};

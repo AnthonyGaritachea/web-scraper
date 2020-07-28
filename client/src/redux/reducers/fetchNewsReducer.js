@@ -8,6 +8,12 @@ const fetchNewsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 news: [...action.payload]
+            };
+        case 'DELETE_STORY':
+            const story = action.payload;
+            return {
+                ...state,
+                news: state.news.filter(newsStory => newsStory._id !== story._id)
             }
             default: return state
     };

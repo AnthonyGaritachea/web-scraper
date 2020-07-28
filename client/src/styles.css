@@ -73,3 +73,7 @@ body {
 .delete-icon {
     cursor: pointer;
 }
+
+.tooltip {
+    color: lightblue;
+}
