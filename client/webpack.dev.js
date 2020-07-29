@@ -22,6 +22,7 @@ module.exports = {
     },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
+        historyApiFallback: true,
         contentBase: path.join(__dirname, 'public'),
         proxy: {
             '/scraper': 'http://localhost:5000',

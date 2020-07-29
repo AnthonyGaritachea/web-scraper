@@ -11,9 +11,11 @@ const fetchNewsReducer = (state = initialState, action) => {
             };
         case 'DELETE_STORY':
             const story = action.payload;
-            return {
-                ...state,
-                news: state.news.filter(newsStory => newsStory._id !== story._id)
+            if(window.location.pathname === '/'){
+                return {
+                    ...state,
+                    news: state.news.filter(newsStory => newsStory._id !== story._id)
+                }
             }
             default: return state
     };

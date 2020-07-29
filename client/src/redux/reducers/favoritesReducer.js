@@ -6,7 +6,9 @@ const favoritesReducer = (state = initialState, action) => {
             return [...state, action.payload];
         case 'DELETE_STORY':
             const story = action.payload;
-            return state.filter(newsStory => newsStory._id !== story._id);
+            if(window.location.pathname === '/favorites'){
+                return state.filter(newsStory => newsStory._id !== story._id);
+            }
             default: 
                 return state;
     };
