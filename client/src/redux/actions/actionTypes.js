@@ -11,9 +11,13 @@ export const fetchNews = () => {
 };
 
 export const addToFavorites = story => {
-    return {
-        type: 'ADD_TO_FAVORITES',
-        payload: story  
+    return dispatch => {
+        setTimeout(() => {
+            dispatch({
+                type: 'ADD_TO_FAVORITES',
+                payload: story
+            })
+        }, 1000)
     };
 };
 

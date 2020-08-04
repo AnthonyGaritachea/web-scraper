@@ -1,17 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Article from './Article.jsx';
-import Button from './Button.jsx';
 import { fetchNews } from '../redux/actions/actionTypes.js';
 
 const DisplayArticles = () => {
     const dispatch = useDispatch();
     const articles = useSelector(state => state.scrapedNews.news);
-
-    useEffect(() => {
-        dispatch(fetchNews());
-    }, []);
 
     if(!articles){
         return (
@@ -23,7 +18,7 @@ const DisplayArticles = () => {
 
     return (
         <div>
-        <Button />
+            <button onClick={() => dispatch(fetchNews())}>GET stories</button>
         <div>
             { articles.map(story => {
                 return (

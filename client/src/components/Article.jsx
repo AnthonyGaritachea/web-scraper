@@ -47,7 +47,7 @@ const Article = props => {
                             trigger='click' 
                             animation='zoom'
                             visible={isHeartTooltipVisible}
-                            overlay={<span className='tooltip'>added to favorites</span>}
+                            overlay={<span className='tooltip'>adding to favorites...</span>}
                         >
                                 <FiHeart
                                     color='red'
