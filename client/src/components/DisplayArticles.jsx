@@ -17,9 +17,11 @@ const DisplayArticles = () => {
     };
 
     return (
-        <div>
-            <button onClick={() => dispatch(fetchNews())}>GET stories</button>
-        <div>
+        <>
+            <div className='button-container'>
+                <button className='button' onClick={() => dispatch(fetchNews())}>Get stories</button>
+            </div>
+        <>
             { articles.map(story => {
                 return (
                     <div className='article-container' key={story._id}>
@@ -34,8 +36,8 @@ const DisplayArticles = () => {
                     </div>
                 )
             })}
-        </div>
-       </div>
+        </>
+       </>
     )
 };
 
